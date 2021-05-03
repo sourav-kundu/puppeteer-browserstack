@@ -39,7 +39,7 @@ BrowserStack Puppeteer tests in beta supports `chrome` browser version 72 and ab
 
 You can use the `browser_version` capability to specify the version of the browser where you want to run your tests. We support values like `latest-beta`, `latest`, `latest-1`, `latest-2` and so on, in the `browser_version` capability so specify the current beta, latest or latest-n browser version to run your tests.
 
-You can specify the `browser` and `browser_version` capability as follows: (`'browser': 'chromee', 'browser_version': 'latest-beta'`)
+You can specify the `browser` and `browser_version` capability as follows:<br> (`'browser': 'chrome', 'browser_version': 'latest-beta'`)
 
 ### OS (with versions) supported
 1. Windows 10 (`'os': 'Windows', 'os_version': '10'`)
