@@ -22,6 +22,14 @@ You have to replace `YOUR_USERNAME` and `YOUR_ACCESS_KEY` in the sample scripts 
 3. Replace `YOUR_USERNAME` and `YOUR_ACCESS_KEY` in `google_search.js` with your BrowserStack credentials
 3. Run the sample script using `node google_search.js`
 
+## Test across multiple browser and OS versions in parallel
+
+1. Clone this repository (if not already done)
+2. Install the dependencies using `npm install` (if not already done)
+3. Replace `YOUR_USERNAME` and `YOUR_ACCESS_KEY` in `parallel_test.js` file, with your BrowserStack credentials
+4. Run across 8 different browser and OS combinations in parallel using `node parallel_test.js`
+
+
 ## Run sample test on privately hosted websites
 
 1. You have to download the BrowserStack Local binary from the links below (depending on your local machine's environment):
@@ -35,7 +43,9 @@ You have to replace `YOUR_USERNAME` and `YOUR_ACCESS_KEY` in the sample scripts 
 
 ## Supported browser versions
 
-BrowserStack Puppeteer tests in beta supports `chrome` browser version 72 and above across different versions of Windows and macOS operating systems.
+Puppeteer tests can be run on BrowserStack in the following browsers (including versions):
+1. `chrome` browser version `72` and above across different versions of Windows and macOS operating systems mentioned below.
+2. `firefox` browser version `86` and above across all supported OS versions as mentioned below.
 
 You can use the `browser_version` capability to specify the version of the browser where you want to run your tests. We support values like `latest-beta`, `latest`, `latest-1`, `latest-2` and so on, in the `browser_version` capability so specify the current beta, latest or latest-n browser version to run your tests.
 
