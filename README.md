@@ -62,6 +62,14 @@ You can specify the `browser` and `browser_version` capability as follows:<br> (
 8. macOS Sierra (`'os': 'osx', 'os_version': 'Sierra'`)
 9. macOS El Capitan (`'os': 'osx', 'os_version': 'El Capitan'`)
 
+## Get Puppeteer session details
+
+While your Puppeteer session runs on BrowserStack, we generate a unique ID for the session, build and also generate URLs for the various types of logs which you can use to build your own reporting or for any other purpose that you might like.
+
+A sample script with the use of the API to fetch all the relevant session details is shown in the [sample_session_details_API.js](./sample_session_details_API.js). 
+
+You can see the [documentation for marking test status using REST API](https://www.browserstack.com/docs/automate/api-reference/selenium/session#set-test-status) using the session ID for the session, any time even after the session has completed its execution.
+
 ## Facing issues?
 
 If you are facing any issue with any of the above or any other issue in trying to run your Playwright tests on BrowserStack, you can reach out to me directly at `sourav.k@browserstack.com` and I will be happy to debug your issues or at the least ensure that your issue becomes our top priority to resolve.
