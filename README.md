@@ -46,6 +46,7 @@ You have to replace `YOUR_USERNAME` and `YOUR_ACCESS_KEY` in the sample scripts 
 Puppeteer tests can be run on BrowserStack in the following browsers (including versions):
 1. `chrome` browser version `72` and above across different versions of Windows and macOS operating systems mentioned below.
 2. `firefox` browser version `86` and above across all supported OS versions as mentioned below.
+3. `edge` browser version `80` and above across all supported OS versions as mentioned below.
 
 You can use the `browser_version` capability to specify the version of the browser where you want to run your tests. We support values like `latest-beta`, `latest`, `latest-1`, `latest-2` and so on, in the `browser_version` capability so specify the current beta, latest or latest-n browser version to run your tests.
 
