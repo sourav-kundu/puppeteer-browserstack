@@ -44,20 +44,20 @@ const capabilities = [
     'build': 'puppeteer-build-2'
 },
 {
+  'browser': 'edge',
+  'browser_version': 'latest',
+  'os': 'osx',
+  'os_version': 'catalina',
+  'name': 'Edge latest on Catalina',
+  'build': 'puppeteer-build-2'
+},
+{
   	'browser': 'chrome',
     'browser_version': 'latest-1',
     'os': 'osx',
     'os_version': 'catalina',
     'name': 'Chrome latest-1 on Catalina',
     'build': 'puppeteer-build-2'
-},
-{
-  'browser': 'firefox',
-  'browser_version': 'latest-1',
-  'os': 'osx',
-  'os_version': 'catalina',
-  'name': 'Firefox latest-1 on Catalina',
-  'build': 'puppeteer-build-2'
 },
 {
     'browser': 'chrome',
@@ -76,19 +76,19 @@ const capabilities = [
     'build': 'puppeteer-build-2'
 },
 {
+  'browser': 'edge',
+  'browser_version': 'latest',
+  'os': 'Windows',
+  'os_version': '10',
+  'name': 'Edge latest on Win10',
+  'build': 'puppeteer-build-2'
+},
+{
   'browser': 'chrome',
   'browser_version': 'latest-1',
   'os': 'Windows',
   'os_version': '10',
   'name': 'Chrome latest-1 on Win10',
-  'build': 'puppeteer-build-2'
-},
-{
-  'browser': 'firefox',
-  'browser_version': 'latest-1',
-  'os': 'Windows',
-  'os_version': '10',
-  'name': 'Firefox latest-1 on Win10',
   'build': 'puppeteer-build-2'
 }]
 
