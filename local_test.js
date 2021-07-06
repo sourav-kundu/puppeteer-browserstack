@@ -10,8 +10,8 @@ const expect = require('chai').expect;
         'os_version': 'big sur',
         'build': 'puppeteer-build-1',
         'name': 'My first Puppeteer test',
-        'browserstack.username': 'YOUR_USERNAME',
-        'browserstack.accessKey': 'YOUR_ACCESS_KEY',
+        'browserstack.username': process.env.BROWSERSTACK_USERNAME || 'YOUR_USERNAME',
+        'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY',
         'browserstack.local': 'true'  // You have to ensure that you have started the BrowserStackLocal binary in your system and you have seen '[SUCCESS] You can now access your local server(s) in our remote browser' in the terminal
     };
     const browser = await puppeteer.connect({

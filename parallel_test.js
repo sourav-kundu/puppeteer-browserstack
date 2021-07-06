@@ -3,8 +3,10 @@ const expect = require('chai').expect;
 const main = async (cap) => {
     console.log("Starting test -->", cap['name'])
     
+    cap['browserstack.username'] = process.env.BROWSERSTACK_USERNAME || 'YOUR_USERNAME';
+    cap['browserstack.accessKey'] = process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY';
     const browser = await puppeteer.connect({
-      browserWSEndpoint:`ws://YOUR_USERNAME:YOUR_ACCESS_KEY@cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(cap))}`,
+      browserWSEndpoint:`ws://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(cap))}`,
     });
 
     const page = await browser.newPage();

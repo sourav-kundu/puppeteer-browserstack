@@ -10,8 +10,8 @@ const expect = require('chai').expect;
         'os_version': 'big sur',
         'build': 'puppeteer-build-1',
         'name': 'My first Puppeteer test',
-        'browserstack.username': 'YOUR_USERNAME',
-        'browserstack.accessKey': 'YOUR_ACCESS_KEY'
+        'browserstack.username': process.env.BROWSERSTACK_USERNAME || 'YOUR_USERNAME',
+        'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY'
     };
     const browser = await puppeteer.connect({
     browserWSEndpoint:
