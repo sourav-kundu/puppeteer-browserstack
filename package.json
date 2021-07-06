@@ -3,6 +3,7 @@
     "puppeteer": "^8.0.0"
   },
   "devDependencies": {
+    "browserstack-local": "^1.4.8",
     "chai": "^4.3.4"
   }
 }
