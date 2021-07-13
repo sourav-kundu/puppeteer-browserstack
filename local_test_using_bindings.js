@@ -1,22 +1,46 @@
 'use strict';
-const { strict } = require('once');
+
 const puppeteer = require('puppeteer');
-const expect = require('chai').expect;
-const browserstack = require('browserstack-local');
+const BrowserStackLocal = require('browserstack-local');
 
-//creates an instance of Local
-const bs_local = new browserstack.Local();
+const bsLocal = new BrowserStackLocal.Local();
 
-// replace <browserstack-accesskey> with your key. You can also set an environment variable - "BROWSERSTACK_ACCESS_KEY".
-const bs_local_args = { 'key': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY' };
+// replace <browserstack-accesskey> with your key. You can also set an
+// environment variable - "BROWSERSTACK_ACCESS_KEY".
+const BS_LOCAL_ARGS = {
+    'key': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY'
+};
 
-// Starts the Local instance with the required arguments
-bs_local.start(bs_local_args, async function () {
+/**
+ * Mark test status on BrowserStack.
+ *
+ * @param {Page} page - Page object created by puppteer context.
+ * @param {String} status - Status string can be either passed|failed.
+ * @param {String} reason - Explanatory reason for the status marked.
+ * @return {Promise<String>} Stringified response from BrowserStack regarding the
+ * execution of the jsExecutor.
+ */
+function markTest(page, status, reason) {
+    return page.evaluate(
+        _ => {},
+        `browserstack_executor: ${JSON.stringify({
+            action: 'setSessionStatus',
+            arguments: { status, reason }
+        })}`);
+}
+
+/**
+ * Driver Test Function.
+ *
+ * @async
+ * @return {Promise<void>}
+ */
+async function testFn() {
     console.log('Started BrowserStackLocal');
-  
+
     // Check if BrowserStack local instance is running
-    console.log('BrowserStackLocal running:', bs_local.isRunning());
-  
+    console.log(`BrowserStackLocal running: ${bsLocal.isRunning()}`);
+
     const caps = {
         'browserName': 'chrome',
         'browser_version': 'latest',
@@ -28,29 +52,34 @@ bs_local.start(bs_local_args, async function () {
         'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY',
         'browserstack.local': 'true'
     };
-    const browser = await puppeteer.connect({
-    browserWSEndpoint:
-    `ws://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(caps))}`,
-    });
 
-    /* 
-    *  BrowserStack specific code ends here
-    */
+    // Use `.connect()` to initiate an Automate session on BrowserStack
+    const browser = await puppeteer.connect({
+        browserWSEndpoint: `wss://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(caps))}`,
+    });
+    // BrowserStack specific code ends here
+
     const page = await browser.newPage();
     await page.goto('http://localhost:45691');
     try {
         await page.waitForFunction(
-            'document.querySelector("body").innerText.includes("This is an internal server for BrowserStack Local")',
-          );
-        // following line of code is responsible for marking the status of the test on BrowserStack as 'passed'. You can use this code in your after hook after each test
-        await page.evaluate(_ => {}, `browserstack_executor: ${JSON.stringify({action: 'setSessionStatus',arguments: {status: 'passed',reason: 'Local is up and running'}})}`);
+            `document
+                .querySelector("body")
+                .innerText
+                .includes("This is an internal server for BrowserStack Local")`,
+        );
+        // Following line of code is responsible for marking the status of the
+        // test on BrowserStack as 'passed'. You can use this code in your
+        // after hook after each test
+        await markTest(page, 'passed', 'Local is up and running');
     } catch {
-        await page.evaluate(_ => {}, `browserstack_executor: ${JSON.stringify({action: 'setSessionStatus',arguments: {status: 'failed',reason: 'BrowserStack Local binary is not running'}})}`);
+        await markTest(page, 'failed', 'BrowserStack Local binary is not running');
     }
     await browser.close();
-  
+
     // Stop the Local instance after your test run is completed, i.e after driver.quit
-    bs_local.stop(function () {
-      console.log('Stopped BrowserStackLocal');
-    });
-  });
+    bsLocal.stop(() => console.log('Stopped BrowserStackLocal'));
+}
+
+// Starts the Local instance with the required arguments
+bsLocal.start(BS_LOCAL_ARGS, testFn);
