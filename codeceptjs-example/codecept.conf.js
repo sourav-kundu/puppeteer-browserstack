@@ -11,8 +11,8 @@ const caps = {
   'os_version': 'catalina',
   'name': 'Codecept test using Puppeteer',
   'build': 'CodeceptJS Puppeteer on BrowserStack',
-  'browserstack.username': 'souravkundu5',
-  'browserstack.accessKey': '8rVfmauhSSuDRTH1xxRt'
+  'browserstack.username': process.env.BROWSERSTACK_USERNAME || 'YOUR_USERNAME',
+        'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY'
 };
 
 exports.config = {
