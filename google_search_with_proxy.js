@@ -4,6 +4,9 @@ const puppeteer = require('puppeteer');
 const expect = require('chai').expect;
 const { bootstrap } = require('global-agent');
 
+// Have to set this environment variable with required data before executing this script 
+// export GLOBAL_AGENT_HTTP_PROXY=http://someuser:test123@127.0.0.1:3128
+
 bootstrap();
 
 (async () => {
