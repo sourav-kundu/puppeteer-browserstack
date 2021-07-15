@@ -19,9 +19,9 @@ exports.config = {
   output: './output',
   helpers: {
     Puppeteer: {
-      browser: 'chrome',
+      // browser: 'chrome',
       chrome: {
-        browserWSEndpoint: `ws://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(caps))}`
+        browserWSEndpoint: { wsEndpoint: `wss://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(caps))}` }
       }
     }
   },
