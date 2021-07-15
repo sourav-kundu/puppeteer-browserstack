@@ -12,7 +12,7 @@ const caps = {
   'name': 'Codecept test using Puppeteer',
   'build': 'CodeceptJS Puppeteer on BrowserStack',
   'browserstack.username': process.env.BROWSERSTACK_USERNAME || 'YOUR_USERNAME',
-        'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY'
+  'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY'
 };
 
 exports.config = {
