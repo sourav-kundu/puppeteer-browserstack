@@ -19,11 +19,9 @@ exports.config = {
   output: './output',
   helpers: {
     Puppeteer: {
-      // url: 'http://localhost',
-      show: true,
       browser: 'chrome',
       chrome: {
-        browserWSEndpoint: { wsEndpoint: `wss://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(caps))}` }
+        browserWSEndpoint: `ws://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(caps))}`
       }
     }
   },
