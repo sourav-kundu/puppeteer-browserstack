@@ -6,12 +6,13 @@ setHeadlessWhen(process.env.HEADLESS);
 
 const caps = {
   'browser': 'chrome',
+  'browser_version': 'latest',
   'os': 'osx',
   'os_version': 'catalina',
   'name': 'Codecept test using Puppeteer',
-  'build': 'CodeceptJS on BrowserStack',
-  'browserstack.username': process.env.BROWSERSTACK_USERNAME || 'YOUR_USERNAME',
-  'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY'
+  'build': 'CodeceptJS Puppeteer on BrowserStack',
+  'browserstack.username': 'souravkundu5',
+  'browserstack.accessKey': '8rVfmauhSSuDRTH1xxRt'
 };
 
 exports.config = {
@@ -19,9 +20,8 @@ exports.config = {
   output: './output',
   helpers: {
     Puppeteer: {
-      // browser: 'chrome',
       chrome: {
-        browserWSEndpoint: { wsEndpoint: `wss://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(caps))}` }
+        browserWSEndpoint: `wss://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(caps))}`
       }
     }
   },
