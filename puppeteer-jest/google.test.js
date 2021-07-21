@@ -1,5 +1,7 @@
 // import 'expect-puppeteer'
 
+const { Browser } = require("puppeteer");
+
 describe("Google", () => {
   beforeAll(async () => {
     await page.goto('https://google.com')
@@ -9,7 +11,11 @@ describe("Google", () => {
     await element.click();
     await element.type('BrowserStack');
     await element.press('Enter');
-    expect(await page.title()).toBe('BrowserStack - Google Search');
-    await page.evaluate(_ => {}, `browserstack_executor: ${JSON.stringify({action: 'setSessionStatus',arguments: {status: 'passed',reason: 'Test assertion passed'}})}`);
+    try {
+      expect(await page.title()).toBe('BrowserStack - Google Search');
+      await page.evaluate(_ => {}, `browserstack_executor: ${JSON.stringify({action: 'setSessionStatus',arguments: {status: 'passed',reason: 'Test assertion passed'}})}`);
+    } catch {
+      await page.evaluate(_ => {}, `browserstack_executor: ${JSON.stringify({action: 'setSessionStatus',arguments: {status: 'failed',reason: 'Test assertion failed'}})}`);
+    }
   })
 })

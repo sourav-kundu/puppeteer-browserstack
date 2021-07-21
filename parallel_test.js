@@ -5,6 +5,7 @@ const main = async (cap) => {
     
     cap['browserstack.username'] = process.env.BROWSERSTACK_USERNAME || 'YOUR_USERNAME';
     cap['browserstack.accessKey'] = process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY';
+
     const browser = await puppeteer.connect({
       browserWSEndpoint:`ws://cdp.browserstack.com?caps=${encodeURIComponent(JSON.stringify(cap))}`,
     });
@@ -54,27 +55,19 @@ const capabilities = [
   'build': 'puppeteer-build-2'
 },
 {
-  	'browser': 'chrome',
-    'browser_version': 'latest-1',
-    'os': 'osx',
-    'os_version': 'catalina',
-    'name': 'Chrome latest-1 on Catalina',
-    'build': 'puppeteer-build-2'
-},
-{
     'browser': 'chrome',
-    'browser_version': 'latest',
+    'browser_version': 'latest-1',
     'os': 'Windows',
     'os_version': '10',
-    'name': 'Chrome latest on Win10',
+    'name': 'Chrome latest-1 on Win10',
     'build': 'puppeteer-build-2'
 },
 {
     'browser': 'firefox',
-    'browser_version': 'latest',
+    'browser_version': 'latest-beta',
     'os': 'Windows',
     'os_version': '10',
-    'name': 'Firefox latest on Win10',
+    'name': 'Firefox beta on Win10',
     'build': 'puppeteer-build-2'
 },
 {
@@ -83,14 +76,6 @@ const capabilities = [
   'os': 'Windows',
   'os_version': '10',
   'name': 'Edge latest on Win10',
-  'build': 'puppeteer-build-2'
-},
-{
-  'browser': 'chrome',
-  'browser_version': 'latest-1',
-  'os': 'Windows',
-  'os_version': '10',
-  'name': 'Chrome latest-1 on Win10',
   'build': 'puppeteer-build-2'
 }]
 

@@ -20,7 +20,8 @@ const expect = require('chai').expect;
     });
 
     /* 
-    *  BrowserStack specific code ends here
+    *  BrowserStack specific code ends here.
+    *  You have to ensure that BrowserStackLocal binary is running on your system before invoking this script.
     */
     const page = await browser.newPage();
     await page.goto('http://localhost:45454');
@@ -35,3 +36,5 @@ const expect = require('chai').expect;
     }
     await browser.close();
 })();
+
+//  After the end of the script, ensure to stop the BrowserStackLocal binary that had been started before invoking this script.

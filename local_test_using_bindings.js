@@ -5,8 +5,7 @@ const BrowserStackLocal = require('browserstack-local');
 
 const bsLocal = new BrowserStackLocal.Local();
 
-// replace <browserstack-accesskey> with your key. You can also set an
-// environment variable - "BROWSERSTACK_ACCESS_KEY".
+// replace YOUR_ACCESS_KEY with your key. You can also set an environment variable - "BROWSERSTACK_ACCESS_KEY".
 const BS_LOCAL_ARGS = {
     'key': process.env.BROWSERSTACK_ACCESS_KEY || 'YOUR_ACCESS_KEY'
 };
@@ -14,7 +13,7 @@ const BS_LOCAL_ARGS = {
 /**
  * Mark test status on BrowserStack.
  *
- * @param {Page} page - Page object created by puppteer context.
+ * @param {Page} page - Page object created by Puppeteer context.
  * @param {String} status - Status string can be either passed|failed.
  * @param {String} reason - Explanatory reason for the status marked.
  * @return {Promise<String>} Stringified response from BrowserStack regarding the
