@@ -1,5 +1,5 @@
 # puppeteer-browserstack
-Sample Puppeteer tests to run on BrowserStack
+This sample repository is no longer being maintained. Please refer to [puppeteer-browserstack official BrowserStack repository](https://github.com/browserstack/puppeteer-browserstack)
 
 ## Introduction
 
